@@ -39,6 +39,7 @@
     <ul>
         <li><a href="#">DOCKWAREHOUSE MANAGEMENT</a></li>
         <li><a href="/">LOGIN</a></li>
+        <li><a href="/stats">STASTICS</a></li>
       </ul>
     {% if(data['default'] == []) %}
     <form action="{{ '/save/insert/' ~ data['table'] ~ '/NULL' }}" method = "POST">
@@ -82,10 +83,10 @@
             <br /><br /> <input type="submit" class="btn btn-primary" />
         {% elif(data["table"] == "carrier") %}
             CARRIER ID: <br /><br /> <input type = "text" class="form-control" name = "carrier_id" />
-            <br /><br />CARRIER NAME: <br /><br /> <input type = "text" class="form-control" name = "carrier_name" />
-            <br /><br />CARRIER STREET: <br /><br /> <input type = "text" class="form-control" name = "carrier_street" />
-            <br /><br />CARRIER CITY: <br /><br /> <input type = "text" class="form-control" name = "carrier_city" />
-            <br /><br />CARRIER STATE: <br /><br /> <input type = "text" class="form-control" name = "carrier_state" />
+            <br /><br />CARRIER NAME: <br /><br /> <input type = "text" class="form-control" name = "c_name" />
+            <br /><br />CARRIER STREET: <br /><br /> <input type = "text" class="form-control" name = "c_street" />
+            <br /><br />CARRIER CITY: <br /><br /> <input type = "text" class="form-control" name = "c_city" />
+            <br /><br />CARRIER STATE: <br /><br /> <input type = "text" class="form-control" name = "c_state" />
             <br /><br /> <input type="submit" class="btn btn-primary" />
         {% elif(data["table"] == "purchasing_organization") %}
             PURCHASING ORGANIZATION ID: <br /><br /> <input type = "text" class="form-control" name = "po_id" />
@@ -93,6 +94,13 @@
             <br /><br />PURCHASING ORGANIZATION STREET: <br /><br /> <input type = "text" class="form-control" name = "po_street" />
             <br /><br />PURCHASING ORGANIZATION CITY: <br /><br /> <input type = "text" class="form-control" name = "po_city" />
             <br /><br />PURCHASING ORGANIZATION STATE: <br /><br /> <input type = "text" class="form-control" name = "po_state" />
+            <br /><br /> <input type="submit" class="btn btn-primary" />
+        {% elif(data["table"] == "carrier") %}
+            CARRIER ID: <br /><br /> <input type = "text" class="form-control" name = "carrier_id" />
+            <br /><br />CARRIER NAME: <br /><br /> <input type = "text" class="form-control" name = "carrier_name" />
+            <br /><br />CARRIER STREET: <br /><br /> <input type = "text" class="form-control" name = "carrier_street" />
+            <br /><br />CARRIER CITY: <br /><br /> <input type = "text" class="form-control" name = "carrier_city" />
+            <br /><br />CARRIER STATE: <br /><br /> <input type = "text" class="form-control" name = "carrier_state" />
             <br /><br /> <input type="submit" class="btn btn-primary" />
         {% elif(data["table"] == "appointment" and data["user"] == "po_shipment_mgr") %}
             APPOINTMENT ID: <br /><br /> <input type = "text" class="form-control" name = "appointment_id" />
@@ -168,11 +176,18 @@
            <br /><br />CARRIER STATE: <br /><br /> <input type = "text" class="form-control" name = "carrier_state" value = "{{data['default'][0][4]}}"/>
             <br /><br /> <input type="submit" class="btn btn-primary" />
         {% elif(data["table"] == "purchasing_organization") %}
-            PURCHASING ORGANIZATION ID: <br /><br /> <input type = "text" class="form-control" name = "po_id" value = "{{data['default'][0][0]}}"/>
-            <br /><br />PURCHASING ORGANIZATION NAME: <br /><br /> <input type = "text" class="form-control" name = "po_name" value = "{{data['default'][0][1]}}"/>
-            <br /><br />PURCHASING ORGANIZATION STREET: <br /><br /> <input type = "text" class="form-control" name = "po_street" value = "{{data['default'][0][2]}}"/>
-            <br /><br />PURCHASING ORGANIZATION CITY: <br /><br /> <input type = "text" class="form-control" name = "po_city" value = "{{data['default'][0][3]}}"/>
-            <br /><br />PURCHASING ORGANIZATION STATE: <br /><br /> <input type = "text" class="form-control" name = "po_state" value = "{{data['default'][0][4]}}"/>
+            PURCHASING ORGANIZATION ID: <br /><br /> <input type = "text" class="form-control" name = "po_id" value = "{{data['default'][0][3]}}"/>
+            <br /><br />PURCHASING ORGANIZATION NAME: <br /><br /> <input type = "text" class="form-control" name = "po_name" value = "{{data['default'][0][4]}}"/>
+            <br /><br />PURCHASING ORGANIZATION STREET: <br /><br /> <input type = "text" class="form-control" name = "po_street" value = "{{data['default'][0][0]}}"/>
+            <br /><br />PURCHASING ORGANIZATION CITY: <br /><br /> <input type = "text" class="form-control" name = "po_city" value = "{{data['default'][0][1]}}"/>
+            <br /><br />PURCHASING ORGANIZATION STATE: <br /><br /> <input type = "text" class="form-control" name = "po_state" value = "{{data['default'][0][2]}}"/>
+            <br /><br /> <input type="submit" class="btn btn-primary" />
+        {% elif(data["table"] == "carrier") %}
+            CARRIER ID: <br /><br /> <input type = "text" class="form-control" name = "carrier_id" value = "{{data['default'][0][3]}}"/>
+            <br /><br />CARRIER NAME: <br /><br /> <input type = "text" class="form-control" name = "carrier_name" value = "{{data['default'][0][0]}}"/>
+            <br /><br />CARRIER STREET: <br /><br /> <input type = "text" class="form-control" name = "carrier_street" value = "{{data['default'][0][1]}}"/>
+            <br /><br />CARRIER CITY: <br /><br /> <input type = "text" class="form-control" name = "carrier_city" value = "{{data['default'][0][2]}}"/>
+            <br /><br />CARRIER STATE: <br /><br /> <input type = "text" class="form-control" name = "carrier_state" value = "{{data['default'][0][3]}}"/>
             <br /><br /> <input type="submit" class="btn btn-primary" />
         {% elif(data["table"] == "appointment") %}
             APPOINTMENT ID: <br /><br /> <input type = "text" class="form-control" name = "appointment_id" value = "{{data['default'][0][0]}}"/>

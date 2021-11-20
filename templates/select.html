@@ -39,8 +39,88 @@
     <ul>
         <li><a href="#">DOCKWAREHOUSE MANAGEMENT</a></li>
         <li><a href="/">LOGIN</a></li>
+        <li><a href="/stats">STASTICS</a></li>
       </ul>
-    {% if(data["user"]) == 'po_products_mgr' %}
+    {% if(data["user"] == 'admin') %}
+    <div class="purchasing_organization">
+        <div data-toggle="collapse" data-target="#POSELECT1" style="cursor:pointer;">
+            PURCHASING ORGANIZATIONS
+        </div>
+        <div id="POSELECT1" class="collapse">
+            <table id="purchasing_organization" class="table table-striped table-hover">
+                <tr>
+                    <th>Purchasing Organization ID</th>
+                    <th>Purchasing Organization Name</th> 
+                    <th>Purchasing Organization Street</th>
+                    <th>Purchasing Organization City</th>
+                    <th>Purchasing Organization State</th>    
+                </tr>
+                {% for row in data["purchasing_organization"] %} 
+                <tr>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[4] }}</td>
+                    <td>
+                        <form action="{{ '/form/purchasing_organization/update/' ~ row[3] }}">
+                            <input type="submit" class="btn btn-primary" value = "Update" />
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ '/form/purchasing_organization/delete/' ~ row[3]}}">
+                            <input type="submit" class="btn btn-primary" value = "Delete" />
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            <form action="{{ '/form/purchasing_organization/insert/NULL' }}">
+                <input type="submit" class="btn btn-primary" value = "Insert" />
+            </form>
+        </div>
+    </div>
+    <div class="carrier">
+        <div data-toggle="collapse" data-target="#CARRIERS" style="cursor:pointer;">
+            CARRIERS
+        </div>
+        <div id="CARRIERS" class="collapse">
+        <table class="table table-striped table-hover" id="_carrier">
+            <tr>
+                <th>Carrier ID</th>
+                <th>Carrier Name</th> 
+                <th>Carrier Street</th>
+                <th>Carrier City</th>
+                <th>Carrier State</th>
+                
+                
+            </tr>
+            {% for row in data["carrier"] %} 
+            <tr>
+                
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>
+                    <form action="{{ '/form/carrier/update/' ~ row[0] }}">
+                        <input type="submit" class="btn btn-primary" value = "Update" />
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ '/form/carrier/delete/' ~ row[0]}}">
+                        <input type="submit" class="btn btn-primary" value = "Delete" />
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <form action="{{ '/form/carrier/insert/NULL' }}">
+            <input type="submit" class="btn btn-primary" value = "Insert" />
+        </form>
+    </div>
+    {% elif(data["user"]) == 'po_products_mgr' %}
 
     <div class="purchasing_organization">
         <div data-toggle="collapse" data-target="#POSELECT1" style="cursor:pointer;">
