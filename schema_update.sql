@@ -1,0 +1,10 @@
+alter table appointment alter column status drop not null;
+alter table appointment alter column status set default -1;
+alter table appointment add constraint status_check check (status = 0 OR status=-1 OR status = 1);
+alter table location add constraint location_type check (type='p' OR type='s');
+alter table items alter column dangerous_good set default 0;
+alter table purchasing_organization add constraint po_unique unique (po_name);
+alter table carrier add constraint carrier_unique unique (c_name);
+alter table appointment alter column proposed_date type timestamp;
+alter table requests alter column deadline type timestamp;
+alter table orders alter column alloted_date type timestamp;

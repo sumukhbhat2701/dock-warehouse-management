@@ -416,7 +416,7 @@ try:
                         sp_in = "NULL"
                     else:
                         sp_in = request.form.get("special_instructions")
-                    command = "insert into {} values({},'{}',{},{},{},{},{},{})".format(table, request.form.get("order_id"), request.form.get("alloted_date"), request.form.get("dock"), request.form.get("total_quantity"), sp_in, id, request.form.get("carrier_id"), request.form.get("location_id"))
+                    command = "insert into {} values({},'{}',{},{},'{}',{},{},{})".format(table, request.form.get("order_id"), request.form.get("alloted_date"), request.form.get("dock"), request.form.get("total_quantity"), sp_in, id, request.form.get("carrier_id"), request.form.get("location_id"))
                     cur.execute(command)
                     conn.commit()
                 elif(table=="purchasing_organization_po_contact"):
