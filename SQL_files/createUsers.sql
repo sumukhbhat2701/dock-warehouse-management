@@ -4,6 +4,12 @@ create user po_products_mgr with password 'po@789';
 
 create user carrier_shipment_mgr with password 'car@456';
 
+create user admin with password 'admin';
+
+grant select, update, insert, delete on purchasing_organization to admin;
+
+grant select, update, insert, delete on carrier to admin;
+
 grant select, update, insert, delete on requests to carrier_shipment_mgr;
 
 grant insert, update, select, delete on requests to po_shipment_mgr;
