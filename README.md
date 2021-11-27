@@ -6,6 +6,8 @@ A Shipper or Purchasing Organization needs to transport goods that are produced 
 SU₁,SU₂,...SUₙ are the different storage units inside the warehouse. D₁,D₂,...Dₘ are the docks which facilitate the movement of goods from storage units to the trucks. The number of docks available are less than the number of storage units present that is mn.Therefore a total of m trucks, T₁, T₂,...Tₘ, owned by different or same carriers can be scheduled at a time leaving behind trucks Tₘ₊₁, Tₘ₊₂... waiting to access the docks. There usually exist only 2 gates to enter the storage facility, entry point, G₁ and exit point, G₂. This increases the need for scheduling the trucks, so as to avoid unwanted queues, waits and traffic in and around the facility of purchasing organization. Stopping points S₁, S₂, S₃...Sₖ are generally far from each other and also the warehouse, so we need to track them.
 The problem lies in coordinating operations between storage units, the items stored and dock stations. In the same way, synchronize access slots of the docks with appointments by the carrier. 
 
+![alt ps](https://github.com/sumukhbhat2701/dock-warehouse-management/blob/main/dbms.jpg.jpg)
+
 ### Challenges to tackle:
 - Scheduling access to different docks which are less than the number of carriers which try to access them.
 - Reducing carrier traffic and ambiguity in timings.
@@ -30,7 +32,7 @@ Purchasing Organisation can approve one or many appointments(appointment) that h
 Each purchasing organisation must produce one or many products(product) that has a unique ID(product_id) and a product name(product_name). Each product must contain one or many items. Each and every order must be dropped at one location(location, with same attributes as described before) which is now considered as a stop point with contrast to location with regards to purchasing organization, where it was considered as storing units.
 
 ### ER Diagram: 
-
+![alt erd](https://github.com/sumukhbhat2701/dock-warehouse-management/blob/main/final_er.drawio.png)
 
 ### Assumptions made:
 - A purchasing organization can approve multiple appointments, but an appointment has to be approved by only a specific purchasing organization. If an appointment exists, then it has to be approved by a purchasing organization, but the other way may not hold true.
@@ -45,6 +47,7 @@ Each purchasing organisation must produce one or many products(product) that has
 - A carrier can make multiple appointments, but one appointment can be made by only one carrier. A carrier may not have an appointment, but if an appointment exists, then it is certainly mapped to a carrier.
 
 ### Relational Schema:
+![alt rschema](https://github.com/sumukhbhat2701/dock-warehouse-management/blob/main/schema.png)
 
 ### Tech Stack/Dependencies:
 - Python and Flask for backend
