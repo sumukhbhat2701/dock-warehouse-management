@@ -6,6 +6,7 @@ A Shipper or Purchasing Organization needs to transport goods that are produced 
 SU₁,SU₂,...SUₙ are the different storage units inside the warehouse. D₁,D₂,...Dₘ are the docks which facilitate the movement of goods from storage units to the trucks. The number of docks available are less than the number of storage units present that is mn.Therefore a total of m trucks, T₁, T₂,...Tₘ, owned by different or same carriers can be scheduled at a time leaving behind trucks Tₘ₊₁, Tₘ₊₂... waiting to access the docks. There usually exist only 2 gates to enter the storage facility, entry point, G₁ and exit point, G₂. This increases the need for scheduling the trucks, so as to avoid unwanted queues, waits and traffic in and around the facility of purchasing organization. Stopping points S₁, S₂, S₃...Sₖ are generally far from each other and also the warehouse, so we need to track them.
 The problem lies in coordinating operations between storage units, the items stored and dock stations. In the same way, synchronize access slots of the docks with appointments by the carrier. 
 
+For instance,
 ![alt ps](https://github.com/sumukhbhat2701/dock-warehouse-management/blob/main/dbms.jpg.jpg)
 
 ### Challenges to tackle:
@@ -50,7 +51,7 @@ Each purchasing organisation must produce one or many products(product) that has
 ![alt rschema](https://github.com/sumukhbhat2701/dock-warehouse-management/blob/main/schema.png)
 
 ### Tech Stack/Dependencies:
-- Python and Flask for backend
+- Python3 and Flask for backend
 - HTML, CSS and Bootstrap(v5.0) for frontend
 - Postgresql as RDBMS server
 - Psycopg2 as database adapter for the Python backend
